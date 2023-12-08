@@ -14,7 +14,7 @@ namespace biblioteka
         public static void CreateDBFile(string filename)
         {
             string databaseName = Path.GetFileNameWithoutExtension(filename);
-            using (var connection = new SqlConnection("Data Source=.\\sqlexpress;Initial Catalog=tempdb; Integrated Security=true;User Instance=True;"))
+            using (var connection = new SqlConnection("Server=(localdb)\\mssqllocaldb;Database=master;Trusted_Connection=True;"))
             {
                 connection.Open();
                 using (var command = connection.CreateCommand())
