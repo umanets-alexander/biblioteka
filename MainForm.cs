@@ -23,6 +23,8 @@ namespace biblioteka
 
         private void MainForm_Shown(object sender, EventArgs e)
         {
+            //скачивание всех иконок и картинок необходимых для полноценной работы
+            ImageFile.DownloadImageGitHub();
             //проверяем существует ли файл БД
             if (File.Exists(filePath) == false)
             {
