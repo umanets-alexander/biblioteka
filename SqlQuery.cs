@@ -82,5 +82,179 @@ namespace biblioteka
             sqlConnection.Close();
         }
 
+        //запрос загружающий все данные для просмотра записей категорий
+        public static void UpdateCategory(string namecategory)
+        {
+            sqlConnection.Open();
+            SqlDataReader sqlReader = null;
+            CategoryForm.list_table.Rows.Clear();
+            SqlCommand cmd = new SqlCommand("", sqlConnection); ;
+            if (namecategory == "Genre")
+                cmd = new SqlCommand("select * from GenreTable order by name", sqlConnection);
+            else if (namecategory == "Storage")
+                cmd = new SqlCommand("select * from StorageTable order by name", sqlConnection);
+            else if (namecategory == "Author")
+                cmd = new SqlCommand("select * from AuthorTable order by name", sqlConnection);
+            else if (namecategory == "Translate")
+                cmd = new SqlCommand("select * from TranslatorTable order by name", sqlConnection);
+            else if (namecategory == "Publisher")
+                cmd = new SqlCommand("select * from PublisherTable order by name", sqlConnection);
+            try
+            {
+                sqlReader = cmd.ExecuteReader();
+                while (sqlReader.Read())
+                {
+                    if (namecategory == "Publisher")
+                        CategoryForm.list_table.Rows.Add(Convert.ToString(sqlReader["id"]), Convert.ToString(sqlReader["name"]), Convert.ToString(sqlReader["city"]));
+                    else
+                        CategoryForm.list_table.Rows.Add(Convert.ToString(sqlReader["id"]), Convert.ToString(sqlReader["name"]));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), ex.Source.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (sqlReader != null)
+                    sqlReader.Close();
+            }
+            sqlConnection.Close();
+        }
+
+        //запрос загружающий все данные для просмотра записей данных
+        public static void UpdateInformation(string nameinformation)
+        {
+            sqlConnection.Open();
+            SqlDataReader sqlReader = null;
+            InformationForm.list_table.Rows.Clear();
+            SqlCommand cmd = new SqlCommand("", sqlConnection); ;
+            if (nameinformation == "Readers")
+                cmd = new SqlCommand("select * from SubscriberTable order by surname", sqlConnection);
+            else
+                cmd = new SqlCommand("select * from StorageTable order by name", sqlConnection);
+            try
+            {
+                sqlReader = cmd.ExecuteReader();
+                while (sqlReader.Read())
+                {
+                    if (nameinformation == "Readers")
+                        InformationForm.list_table.Rows.Add(Convert.ToString(sqlReader["id"]), Convert.ToString(sqlReader["surname"]) + " " + Convert.ToString(sqlReader["name"]) + " " + Convert.ToString(sqlReader["patronymic"]), Convert.ToString(sqlReader["date_birthday"]), Convert.ToString(sqlReader["home_address"]), Convert.ToString(sqlReader["passport"]), Convert.ToString(sqlReader["place_work"]), Convert.ToString(sqlReader["telephone"]));
+                    else
+                        InformationForm.list_table.Rows.Add(Convert.ToString(sqlReader["id"]), Convert.ToString(sqlReader["name"]));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), ex.Source.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (sqlReader != null)
+                    sqlReader.Close();
+            }
+            sqlConnection.Close();
+        }
+
+
+        //запрос для добавления новой записи категории
+        public static void AddCategory(string namecategory, string textcategory_one, string textcategory_two)
+        {
+            sqlConnection.Open();
+            SqlCommand cmd = new SqlCommand("", sqlConnection); ;
+            if (namecategory == "Genre")
+                cmd = new SqlCommand("insert into GenreTable (name) values (@name)", sqlConnection);
+            else if (namecategory == "Storage")
+                cmd = new SqlCommand("insert into StorageTable (name) values (@name)", sqlConnection);
+            else if (namecategory == "Author")
+                cmd = new SqlCommand("insert into AuthorTable (name) values (@name)", sqlConnection);
+            else if (namecategory == "Translate")
+                cmd = new SqlCommand("insert into TranslatorTable (name) values (@name)", sqlConnection);
+            else if (namecategory == "Publisher")
+                cmd = new SqlCommand("insert into PublisherTable (name, city) values (@name, @city)", sqlConnection);
+            if (namecategory == "Publisher")
+            {
+                cmd.Parameters.AddWithValue("name", textcategory_one);
+                cmd.Parameters.AddWithValue("city", textcategory_two);
+            }
+            else
+                cmd.Parameters.AddWithValue("name", textcategory_one);
+            cmd.ExecuteNonQuery();
+            sqlConnection.Close();
+        }
+
+        //запрос для добавления новой записи информации
+        public static void AddInformation(string nameinformation, string textinformation_one, string textinformation_two, string textinformation_three, string textinformation_four, string textinformation_five, string textinformation_six, string textinformation_seven, string textinformation_eight)
+        {
+            sqlConnection.Open();
+            SqlCommand cmd = new SqlCommand("", sqlConnection);
+            if (nameinformation == "Readers")
+                cmd = new SqlCommand("insert into SubscriberTable (surname, name, patronymic, date_birthday, home_address, passport, place_work, telephone) values (@surname, @name, @patronymic, @date_birthday, @home_address, @passport, @place_work, @telephone)", sqlConnection);
+            if (nameinformation == "Readers")
+            {
+                cmd.Parameters.AddWithValue("surname", textinformation_one);
+                cmd.Parameters.AddWithValue("name", textinformation_two);
+                cmd.Parameters.AddWithValue("patronymic", textinformation_three);
+                cmd.Parameters.AddWithValue("date_birthday", textinformation_four);
+                cmd.Parameters.AddWithValue("home_Address", textinformation_five);
+                cmd.Parameters.AddWithValue("passport", textinformation_six);
+                cmd.Parameters.AddWithValue("place_work", textinformation_seven);
+                cmd.Parameters.AddWithValue("telephone", textinformation_eight);
+            }
+            else
+                cmd.Parameters.AddWithValue("name", textinformation_one);
+            cmd.ExecuteNonQuery();
+            sqlConnection.Close();
+        }
+
+        //запрос на редактирование записи
+        public static void EditingCategory(string namecategory, string textcategory_one, string textcategory_two)
+        {
+            sqlConnection.Open();
+            SqlCommand cmd = new SqlCommand("", sqlConnection); ;
+            if (namecategory == "Genre")
+                cmd = new SqlCommand("update GenreTable set name=@name where id=@id", sqlConnection);
+            else if (namecategory == "Storage")
+                cmd = new SqlCommand("update StorageTable set name=@name where id=@id", sqlConnection);
+            else if (namecategory == "Author")
+                cmd = new SqlCommand("update AuthorTable set name=@name where id=@id", sqlConnection);
+            else if (namecategory == "Translate")
+                cmd = new SqlCommand("update TranslatorTable set name=@name where id=@id", sqlConnection);
+            else if (namecategory == "Publisher")
+                cmd = new SqlCommand("update PublisherTable set name=@name, city=@city where id=@id", sqlConnection);
+            if (namecategory == "Publisher")
+            {
+                cmd.Parameters.AddWithValue("name", textcategory_one);
+                cmd.Parameters.AddWithValue("city", textcategory_two);
+                cmd.Parameters.AddWithValue("id", CategoryForm.list_table[0, CategoryForm.list_table.CurrentRow.Index].Value.ToString());
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("name", textcategory_one);
+                cmd.Parameters.AddWithValue("id", CategoryForm.list_table[0, CategoryForm.list_table.CurrentRow.Index].Value.ToString());
+            }
+            cmd.ExecuteNonQuery();
+            sqlConnection.Close();
+        }
+
+        //запрос на удаление записи
+        public static void DeleteCategory(string namecategory, int key)
+        {
+            sqlConnection.Open();
+            SqlCommand cmd = new SqlCommand("", sqlConnection); ;
+            if (namecategory == "Genre")
+                cmd = new SqlCommand("delete from GenreTable where id=@id", sqlConnection);
+            else if (namecategory == "Storage")
+                cmd = new SqlCommand("delete from StorageTable where id=@id", sqlConnection);
+            else if (namecategory == "Author")
+                cmd = new SqlCommand("delete from AuthorTable where id=@id", sqlConnection);
+            else if (namecategory == "Translate")
+                cmd = new SqlCommand("delete from TranslatorTable where id=@id", sqlConnection);
+            else if (namecategory == "Publisher")
+                cmd = new SqlCommand("delete from PublisherTable where id=@id", sqlConnection);
+            cmd.Parameters.AddWithValue("id", key);
+            cmd.ExecuteNonQuery();
+            sqlConnection.Close();
+        }
     }
 }
