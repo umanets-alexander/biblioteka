@@ -36,5 +36,10 @@ namespace biblioteka
                 SqlQuery.CreateTable();
             }
         }
+
+        private void выходToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
