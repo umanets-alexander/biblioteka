@@ -118,6 +118,31 @@ namespace biblioteka
             }
         }
 
+        public void GenreAddEditing()
+        {
+            label_one.Text = "Название:";
+            if (this.Text == "Добавление категории выборки - Жанры")
+            {
+                this.Controls.Add(btn_add);
+                btn_add.Click += (object senders, EventArgs se) =>
+                {
+                    SqlQuery.AddCategory("Genre", textbox_one.Text, null);
+                    SqlQuery.UpdateCategory("Genre");
+                    this.Close();
+                };
+            }
+            else
+            {
+                this.Controls.Add(btn_editing);
+                btn_editing.Click += (object senders, EventArgs se) =>
+                {
+                    SqlQuery.EditingCategory("Genre", textbox_one.Text, null);
+                    SqlQuery.UpdateCategory("Genre");
+                    this.Close();
+                };
+            }
+        }
+
         private void CategoryAddEditingForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Controls.Clear();

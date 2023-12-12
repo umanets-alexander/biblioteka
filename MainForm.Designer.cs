@@ -109,6 +109,7 @@
             this.жанрыToolStripMenuItem.Name = "жанрыToolStripMenuItem";
             this.жанрыToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.жанрыToolStripMenuItem.Text = "Жанры";
+            this.жанрыToolStripMenuItem.Click += new System.EventHandler(this.жанрыToolStripMenuItem_Click);
             // 
             // авторыToolStripMenuItem
             // 

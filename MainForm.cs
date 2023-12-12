@@ -68,5 +68,16 @@ namespace biblioteka
             Category.Show();
             SqlQuery.UpdateCategory("Storage");
         }
+
+        //открываем окно для просмотра списка жанра книг
+        private void жанрыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CategoryForm Category;
+            Category = new CategoryForm();
+            Category.Release_form();
+            Category.Genre();
+            Category.Show();
+            SqlQuery.UpdateCategory("Genre");
+        }
     }
 }
