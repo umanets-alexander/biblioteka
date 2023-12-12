@@ -105,7 +105,7 @@ namespace biblioteka
                 while (sqlReader.Read())
                 {
                     if (namecategory == "Publisher")
-                        CategoryForm.list_table.Rows.Add(Convert.ToString(sqlReader["id"]), Convert.ToString(sqlReader["name"]), Convert.ToString(sqlReader["city"]));
+                        CategoryForm.list_table.Rows.Add(Convert.ToString(sqlReader["id"]), Convert.ToString(sqlReader["name"]), Convert.ToString(sqlReader["description"]));
                     else
                         CategoryForm.list_table.Rows.Add(Convert.ToString(sqlReader["id"]), Convert.ToString(sqlReader["name"]));
                 }
@@ -171,11 +171,11 @@ namespace biblioteka
             else if (namecategory == "Translate")
                 cmd = new SqlCommand("insert into TranslatorTable (name) values (@name)", sqlConnection);
             else if (namecategory == "Publisher")
-                cmd = new SqlCommand("insert into PublisherTable (name, city) values (@name, @city)", sqlConnection);
+                cmd = new SqlCommand("insert into PublisherTable (name, description) values (@name, @description)", sqlConnection);
             if (namecategory == "Publisher")
             {
                 cmd.Parameters.AddWithValue("name", textcategory_one);
-                cmd.Parameters.AddWithValue("city", textcategory_two);
+                cmd.Parameters.AddWithValue("description", textcategory_two);
             }
             else
                 cmd.Parameters.AddWithValue("name", textcategory_one);
@@ -221,11 +221,11 @@ namespace biblioteka
             else if (namecategory == "Translate")
                 cmd = new SqlCommand("update TranslatorTable set name=@name where id=@id", sqlConnection);
             else if (namecategory == "Publisher")
-                cmd = new SqlCommand("update PublisherTable set name=@name, city=@city where id=@id", sqlConnection);
+                cmd = new SqlCommand("update PublisherTable set name=@name, description=@description where id=@id", sqlConnection);
             if (namecategory == "Publisher")
             {
                 cmd.Parameters.AddWithValue("name", textcategory_one);
-                cmd.Parameters.AddWithValue("city", textcategory_two);
+                cmd.Parameters.AddWithValue("description", textcategory_two);
                 cmd.Parameters.AddWithValue("id", CategoryForm.list_table[0, CategoryForm.list_table.CurrentRow.Index].Value.ToString());
             }
             else

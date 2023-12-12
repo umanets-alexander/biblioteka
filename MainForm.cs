@@ -43,5 +43,19 @@ namespace biblioteka
         {
             Close();
         }
+
+        private void издательстваToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CategoryForm Category;
+            Category = new CategoryForm();
+            //заполняем новую форму необходимыми элементами
+            Category.Release_form();
+            //заполняем необходимыми свойствами форму
+            Category.Publisher();
+            //запускаем окно просмотра
+            Category.Show();
+            //выполняем запрос на загрузку данных БД
+            SqlQuery.UpdateCategory("Publisher");
+        }
     }
 }
