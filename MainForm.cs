@@ -90,5 +90,16 @@ namespace biblioteka
             Category.Show();
             SqlQuery.UpdateCategory("Author");
         }
+
+        //открываем окно для просмотра списка переводчиков книг
+        private void переводчикиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CategoryForm Category;
+            Category = new CategoryForm();
+            Category.Release_form();
+            Category.Translator();
+            Category.Show();
+            SqlQuery.UpdateCategory("Translator");
+        }
     }
 }

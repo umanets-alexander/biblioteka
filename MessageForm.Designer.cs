@@ -30,9 +30,9 @@
         {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labeltext = new System.Windows.Forms.Label();
             this.btn_yes = new System.Windows.Forms.Button();
             this.btn_no = new System.Windows.Forms.Button();
-            this.labeltext = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -53,6 +53,18 @@
             this.panel1.Size = new System.Drawing.Size(289, 80);
             this.panel1.TabIndex = 1;
             // 
+            // labeltext
+            // 
+            this.labeltext.AllowDrop = true;
+            this.labeltext.AutoSize = true;
+            this.labeltext.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labeltext.Location = new System.Drawing.Point(0, 0);
+            this.labeltext.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labeltext.MaximumSize = new System.Drawing.Size(280, 0);
+            this.labeltext.Name = "labeltext";
+            this.labeltext.Size = new System.Drawing.Size(0, 16);
+            this.labeltext.TabIndex = 0;
+            // 
             // btn_yes
             // 
             this.btn_yes.Location = new System.Drawing.Point(348, 101);
@@ -70,18 +82,6 @@
             this.btn_no.Size = new System.Drawing.Size(40, 40);
             this.btn_no.TabIndex = 2;
             this.btn_no.UseVisualStyleBackColor = true;
-            // 
-            // labeltext
-            // 
-            this.labeltext.AllowDrop = true;
-            this.labeltext.AutoSize = true;
-            this.labeltext.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labeltext.Location = new System.Drawing.Point(0, 0);
-            this.labeltext.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labeltext.MaximumSize = new System.Drawing.Size(280, 0);
-            this.labeltext.Name = "labeltext";
-            this.labeltext.Size = new System.Drawing.Size(0, 16);
-            this.labeltext.TabIndex = 0;
             // 
             // MessageForm
             // 

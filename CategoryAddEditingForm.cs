@@ -170,6 +170,33 @@ namespace biblioteka
             }
         }
 
+        public void TranslatorAddEditing()
+        {
+            label_one.Text = "Переводчик:";
+            textbox_one.Size = new Size(269, 24);
+            textbox_one.Location = new Point(117, 6);
+            if (this.Text == "Добавление категории выборки - Переводчики")
+            {
+                this.Controls.Add(btn_add);
+                btn_add.Click += (object senders, EventArgs se) =>
+                {
+                    SqlQuery.AddCategory("Translator", textbox_one.Text, null);
+                    SqlQuery.UpdateCategory("Translator");
+                    this.Close();
+                };
+            }
+            else
+            {
+                this.Controls.Add(btn_editing);
+                btn_editing.Click += (object senders, EventArgs se) =>
+                {
+                    SqlQuery.EditingCategory("Translator", textbox_one.Text, null);
+                    SqlQuery.UpdateCategory("Translator");
+                    this.Close();
+                };
+            }
+        }
+
         private void CategoryAddEditingForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Controls.Clear();

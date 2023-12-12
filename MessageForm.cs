@@ -83,14 +83,14 @@ namespace biblioteka
                     Close();
                 };
             }
-            else if (text == "TranslateDelete")
+            else if (text == "TranslatorDelete")
             {
                 labeltext.Text = "Вы действительно хотите удалить запись переводчика " + name + "?";
                 this.Text = "Удаление записи переводчика " + name;
                 btn_yes.Click += (object senders, EventArgs se) =>
                 {
-                    SqlQuery.DeleteCategory("Translate", id);
-                    SqlQuery.UpdateCategory("Translate");
+                    SqlQuery.DeleteCategory("Translator", id);
+                    SqlQuery.UpdateCategory("Translator");
                     Close();
                 };
             }

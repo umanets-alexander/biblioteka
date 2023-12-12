@@ -95,7 +95,7 @@ namespace biblioteka
                 cmd = new SqlCommand("select * from StorageTable order by name", sqlConnection);
             else if (namecategory == "Author")
                 cmd = new SqlCommand("select * from AuthorTable order by name", sqlConnection);
-            else if (namecategory == "Translate")
+            else if (namecategory == "Translator")
                 cmd = new SqlCommand("select * from TranslatorTable order by name", sqlConnection);
             else if (namecategory == "Publisher")
                 cmd = new SqlCommand("select * from PublisherTable order by name", sqlConnection);
@@ -168,7 +168,7 @@ namespace biblioteka
                 cmd = new SqlCommand("insert into StorageTable (name) values (@name)", sqlConnection);
             else if (namecategory == "Author")
                 cmd = new SqlCommand("insert into AuthorTable (name) values (@name)", sqlConnection);
-            else if (namecategory == "Translate")
+            else if (namecategory == "Translator")
                 cmd = new SqlCommand("insert into TranslatorTable (name) values (@name)", sqlConnection);
             else if (namecategory == "Publisher")
                 cmd = new SqlCommand("insert into PublisherTable (name, description) values (@name, @description)", sqlConnection);
@@ -218,7 +218,7 @@ namespace biblioteka
                 cmd = new SqlCommand("update StorageTable set name=@name where id=@id", sqlConnection);
             else if (namecategory == "Author")
                 cmd = new SqlCommand("update AuthorTable set name=@name where id=@id", sqlConnection);
-            else if (namecategory == "Translate")
+            else if (namecategory == "Translator")
                 cmd = new SqlCommand("update TranslatorTable set name=@name where id=@id", sqlConnection);
             else if (namecategory == "Publisher")
                 cmd = new SqlCommand("update PublisherTable set name=@name, description=@description where id=@id", sqlConnection);
@@ -248,7 +248,7 @@ namespace biblioteka
                 cmd = new SqlCommand("delete from StorageTable where id=@id", sqlConnection);
             else if (namecategory == "Author")
                 cmd = new SqlCommand("delete from AuthorTable where id=@id", sqlConnection);
-            else if (namecategory == "Translate")
+            else if (namecategory == "Translator")
                 cmd = new SqlCommand("delete from TranslatorTable where id=@id", sqlConnection);
             else if (namecategory == "Publisher")
                 cmd = new SqlCommand("delete from PublisherTable where id=@id", sqlConnection);

@@ -123,6 +123,7 @@
             this.переводчикиToolStripMenuItem.Name = "переводчикиToolStripMenuItem";
             this.переводчикиToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.переводчикиToolStripMenuItem.Text = "Переводчики";
+            this.переводчикиToolStripMenuItem.Click += new System.EventHandler(this.переводчикиToolStripMenuItem_Click);
             // 
             // управлениеДаннымиToolStripMenuItem
             // 
