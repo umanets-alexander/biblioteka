@@ -79,5 +79,16 @@ namespace biblioteka
             Category.Show();
             SqlQuery.UpdateCategory("Genre");
         }
+
+        //открываем окно для просмотра списка авторов
+        private void авторыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CategoryForm Category;
+            Category = new CategoryForm();
+            Category.Release_form();
+            Category.Author();
+            Category.Show();
+            SqlQuery.UpdateCategory("Author");
+        }
     }
 }

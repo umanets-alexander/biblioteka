@@ -116,6 +116,7 @@
             this.авторыToolStripMenuItem.Name = "авторыToolStripMenuItem";
             this.авторыToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.авторыToolStripMenuItem.Text = "Авторы";
+            this.авторыToolStripMenuItem.Click += new System.EventHandler(this.авторыToolStripMenuItem_Click);
             // 
             // переводчикиToolStripMenuItem
             // 

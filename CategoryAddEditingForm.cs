@@ -143,6 +143,33 @@ namespace biblioteka
             }
         }
 
+        public void AuthorAddEditing()
+        {
+            label_one.Text = "Автор:";
+            textbox_one.Size = new Size(313, 24);
+            textbox_one.Location = new Point(73, 6);
+            if (this.Text == "Добавление категории выборки - Авторы")
+            {
+                this.Controls.Add(btn_add);
+                btn_add.Click += (object senders, EventArgs se) =>
+                {
+                    SqlQuery.AddCategory("Author", textbox_one.Text, null);
+                    SqlQuery.UpdateCategory("Author");
+                    this.Close();
+                };
+            }
+            else
+            {
+                this.Controls.Add(btn_editing);
+                btn_editing.Click += (object senders, EventArgs se) =>
+                {
+                    SqlQuery.EditingCategory("Author", textbox_one.Text, null);
+                    SqlQuery.UpdateCategory("Author");
+                    this.Close();
+                };
+            }
+        }
+
         private void CategoryAddEditingForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Controls.Clear();

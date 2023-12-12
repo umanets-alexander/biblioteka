@@ -190,5 +190,38 @@ namespace biblioteka
                 MessageWarning.Show();
             };
         }
+
+        public void Author()
+        {
+            this.Text = "Управление категориями выборки - Авторы";
+            list_table.Columns.Add("id", "Номер");
+            list_table.Columns[0].Visible = false;
+            list_table.Columns.Add("name", "ФИО автора");
+            list_table.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            this.Controls.Add(list_table);
+            btn_add.Click += (object senders, EventArgs se) =>
+            {
+                CategoryAddEditing = new CategoryAddEditingForm();
+                CategoryAddEditing.Release_form();
+                CategoryAddEditing.Text = "Добавление категории выборки - Авторы";
+                CategoryAddEditing.AuthorAddEditing();
+                CategoryAddEditing.Show();
+            };
+            btn_editing.Click += (object senders, EventArgs se) =>
+            {
+                CategoryAddEditing = new CategoryAddEditingForm();
+                CategoryAddEditing.Release_form();
+                CategoryAddEditing.Text = "Изменение категории выборки - Авторы";
+                CategoryAddEditing.AuthorAddEditing();
+                CategoryAddEditing.Show();
+                CategoryAddEditingForm.textbox_one.Text = list_table[1, list_table.CurrentRow.Index].Value.ToString();
+            };
+            btn_delete.Click += (object senders, EventArgs se) =>
+            {
+                MessageWarning = new MessageForm();
+                MessageWarning.btn_yes_click("AuthorDelete", list_table[1, list_table.CurrentRow.Index].Value.ToString(), Convert.ToInt32(list_table[0, list_table.CurrentRow.Index].Value));
+                MessageWarning.Show();
+            };
+        }
     }
 }
