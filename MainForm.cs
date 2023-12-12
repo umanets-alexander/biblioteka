@@ -57,5 +57,16 @@ namespace biblioteka
             //выполняем запрос на загрузку данных БД
             SqlQuery.UpdateCategory("Publisher");
         }
+
+        //открываем окно для просмотра списка мест хранения книг
+        private void местаХраненияToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CategoryForm Category;
+            Category = new CategoryForm();
+            Category.Release_form();
+            Category.Storage();
+            Category.Show();
+            SqlQuery.UpdateCategory("Storage");
+        }
     }
 }

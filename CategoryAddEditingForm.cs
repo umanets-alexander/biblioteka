@@ -93,6 +93,31 @@ namespace biblioteka
             }
         }
 
+        public void StorageAddEditing()
+        {
+            label_one.Text = "Название:";
+            if (this.Text == "Добавление категории выборки -  Места хранения")
+            {
+                this.Controls.Add(btn_add);
+                btn_add.Click += (object senders, EventArgs se) =>
+                {
+                    SqlQuery.AddCategory("Storage", textbox_one.Text, null);
+                    SqlQuery.UpdateCategory("Storage");
+                    this.Close();
+                };
+            }
+            else
+            {
+                this.Controls.Add(btn_editing);
+                btn_editing.Click += (object senders, EventArgs se) =>
+                {
+                    SqlQuery.EditingCategory("Storage", textbox_one.Text, null);
+                    SqlQuery.UpdateCategory("Storage");
+                    this.Close();
+                };
+            }
+        }
+
         private void CategoryAddEditingForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Controls.Clear();
