@@ -137,13 +137,14 @@
             // читателиToolStripMenuItem
             // 
             this.читателиToolStripMenuItem.Name = "читателиToolStripMenuItem";
-            this.читателиToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.читателиToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.читателиToolStripMenuItem.Text = "Читатели";
+            this.читателиToolStripMenuItem.Click += new System.EventHandler(this.читателиToolStripMenuItem_Click);
             // 
             // библиотекариToolStripMenuItem
             // 
             this.библиотекариToolStripMenuItem.Name = "библиотекариToolStripMenuItem";
-            this.библиотекариToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.библиотекариToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.библиотекариToolStripMenuItem.Text = "Библиотекари";
             // 
             // вывестиИнформациюToolStripMenuItem

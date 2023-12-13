@@ -60,6 +60,12 @@
     </Compile>
     <Compile Include="DB.cs" />
     <Compile Include="ImageFile.cs" />
+    <Compile Include="InformationAddEditingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InformationAddEditingForm.Designer.cs">
+      <DependentUpon>InformationAddEditingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="InformationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +92,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CategoryForm.resx">
       <DependentUpon>CategoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InformationAddEditingForm.resx">
+      <DependentUpon>InformationAddEditingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InformationForm.resx">
+      <DependentUpon>InformationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

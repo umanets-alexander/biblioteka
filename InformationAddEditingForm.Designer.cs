@@ -1,6 +1,6 @@
 ﻿namespace biblioteka
 {
-    partial class InformationForm
+    partial class InformationAddEditingForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,13 @@
         {
             this.SuspendLayout();
             // 
-            // InformationForm
+            // InformationAddEditingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(431, 288);
-            this.Name = "InformationForm";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.InformationForm_FormClosed);
+            this.ClientSize = new System.Drawing.Size(398, 445);
+            this.Name = "InformationAddEditingForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.InformationAddEditingForm_FormClosed);
             this.ResumeLayout(false);
 
         }

@@ -101,5 +101,15 @@ namespace biblioteka
             Category.Show();
             SqlQuery.UpdateCategory("Translator");
         }
+
+        private void читателиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InformationForm Information;
+            Information = new InformationForm();
+            Information.Release_form();
+            Information.Readers();
+            Information.Show();
+            SqlQuery.UpdateInformation("Readers");
+        }
     }
 }

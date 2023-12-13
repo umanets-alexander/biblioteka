@@ -29,6 +29,11 @@ namespace biblioteka
             this.Controls.Clear();
         }
 
+        private void btn_no_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
         //у каждой процедуры уведомления о удалении свой вариант удаления записи
         public void btn_yes_click(string text, string name, int id)
         {
