@@ -99,6 +99,17 @@ namespace biblioteka
                     Close();
                 };
             }
+            else if (text == "ReadersDelete")
+            {
+                labeltext.Text = "Вы действительно хотите удалить запись читателя " + name + "?";
+                this.Text = "Удаление записи читателя " + name;
+                btn_yes.Click += (object senders, EventArgs se) =>
+                {
+                    SqlQuery.DeleteCategory("Readers", id);
+                    SqlQuery.UpdateInformation("Readers");
+                    Close();
+                };
+            }
         }
     }
 }

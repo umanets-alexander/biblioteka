@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace biblioteka
 {
@@ -99,6 +100,8 @@ namespace biblioteka
                 cmd = new SqlCommand("select * from TranslatorTable order by name", sqlConnection);
             else if (namecategory == "Publisher")
                 cmd = new SqlCommand("select * from PublisherTable order by name", sqlConnection);
+            else if (namecategory == "Readers")
+                cmd = new SqlCommand("select * from SubscriberTable order by name", sqlConnection);
             try
             {
                 sqlReader = cmd.ExecuteReader();
@@ -252,8 +255,26 @@ namespace biblioteka
                 cmd = new SqlCommand("delete from TranslatorTable where id=@id", sqlConnection);
             else if (namecategory == "Publisher")
                 cmd = new SqlCommand("delete from PublisherTable where id=@id", sqlConnection);
+            else if (namecategory == "Readers")
+                cmd = new SqlCommand("delete from SubscriberTable where id=@id", sqlConnection);
             cmd.Parameters.AddWithValue("id", key);
             cmd.ExecuteNonQuery();
+            sqlConnection.Close();
+        }
+
+        //запрос на получение ФИО читателя для окна редактирования
+        public static void FIOReaders()
+        {
+            sqlConnection.Open();
+            SqlCommand cmd = new SqlCommand("", sqlConnection); ;
+            cmd = new SqlCommand("select surname, name, patronymic from SubscriberTable where id=" + InformationForm.list_table[0, InformationForm.list_table.CurrentRow.Index].Value.ToString(), sqlConnection);
+            SqlDataReader sdr = cmd.ExecuteReader();
+            while (sdr.Read())
+            {
+                InformationAddEditingForm.textbox_one.Text = sdr["surname"].ToString();
+                InformationAddEditingForm.textbox_two.Text = sdr["name"].ToString();
+                InformationAddEditingForm.textbox_three.Text = sdr["patronymic"].ToString();
+            }
             sqlConnection.Close();
         }
     }

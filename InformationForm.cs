@@ -19,6 +19,7 @@ namespace biblioteka
         Button btn_delete = new Button();
         Button btn_close = new Button();
         public static DataGridView list_table = new DataGridView();
+        MessageForm MessageWarning;
 
         public InformationForm()
         {
@@ -89,10 +90,33 @@ namespace biblioteka
             {
                 InformationAddEditingForm InformationAddEditing;
                 InformationAddEditing = new InformationAddEditingForm();
-
                 InformationAddEditing.Show();
                 InformationAddEditing.Text = "Добавление данных -  Читатели";
                 InformationAddEditing.ReadersAddEditing();
+            };
+            //задаём действие для кнопки редактирования записи
+            btn_editing.Click += (object senders, EventArgs se) =>
+            {
+                InformationAddEditingForm InformationAddEditing;
+                InformationAddEditing = new InformationAddEditingForm();
+                InformationAddEditing.Show();
+                InformationAddEditing.Text = "Редактирование данных -  Читатели";
+                InformationAddEditing.ReadersAddEditing();
+                SqlQuery.FIOReaders();
+                InformationAddEditingForm.dateTime.Text = list_table[2, list_table.CurrentRow.Index].Value.ToString();
+                InformationAddEditingForm.richTextBox_one.Text = list_table[3, list_table.CurrentRow.Index].Value.ToString();
+                InformationAddEditingForm.textbox_four.Text = list_table[4, list_table.CurrentRow.Index].Value.ToString();
+                InformationAddEditingForm.richTextBox_two.Text = list_table[5, list_table.CurrentRow.Index].Value.ToString();
+                InformationAddEditingForm.textbox_five.Text = list_table[6, list_table.CurrentRow.Index].Value.ToString();
+            };
+            //задаём действие для кнопки удаления записи
+            btn_delete.Click += (object senders, EventArgs se) =>
+            {
+                MessageWarning = new MessageForm();
+                //задаём данные для уведомления об удалении записи
+                MessageWarning.btn_yes_click("ReadersDelete", list_table[1, list_table.CurrentRow.Index].Value.ToString(), Convert.ToInt32(list_table[0, list_table.CurrentRow.Index].Value));
+                //запускаем уведомления об удалении записи
+                MessageWarning.Show();
             };
         }
         private void btn_close_Click(object sender, EventArgs e)
