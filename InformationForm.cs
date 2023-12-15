@@ -92,6 +92,8 @@ namespace biblioteka
                 InformationAddEditing = new InformationAddEditingForm();
                 InformationAddEditing.Show();
                 InformationAddEditing.Text = "Добавление данных -  Читатели";
+                InformationAddEditingForm.richTextBox_one.Clear();
+                InformationAddEditingForm.richTextBox_two.Clear();
                 InformationAddEditing.ReadersAddEditing();
             };
             //задаём действие для кнопки редактирования записи

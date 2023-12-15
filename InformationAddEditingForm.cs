@@ -126,8 +126,20 @@ namespace biblioteka
                 this.Controls.Add(btn_add);
                 btn_add.Click += (object senders, EventArgs se) =>
                 {
-                    SqlQuery.AddInformation("Readers", textbox_one.Text, textbox_two.Text, textbox_three.Text, dateTime.Value.ToString("dd.MM.yyyy"), richTextBox_one.Text, textbox_four.Text, richTextBox_two.Text, textbox_five.Text);
+                    SqlQuery.AllSubscriber("Add", textbox_one.Text, textbox_two.Text, textbox_three.Text, dateTime.Value.ToString("dd.MM.yyyy"), richTextBox_one.Text, textbox_four.Text, richTextBox_two.Text, textbox_five.Text);
                     SqlQuery.UpdateInformation("Readers");
+                    dateTime.ResetText();
+                    this.Close();
+                };
+            }
+            else
+            {
+                this.Controls.Add(btn_add);
+                btn_add.Click += (object senders, EventArgs se) =>
+                {
+                    SqlQuery.AllSubscriber("Edit", textbox_one.Text, textbox_two.Text, textbox_three.Text, dateTime.Value.ToString("dd.MM.yyyy"), richTextBox_one.Text, textbox_four.Text, richTextBox_two.Text, textbox_five.Text);
+                    SqlQuery.UpdateInformation("Readers");
+                    dateTime.ResetText();
                     this.Close();
                 };
             }

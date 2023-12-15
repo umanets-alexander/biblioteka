@@ -186,26 +186,24 @@ namespace biblioteka
             sqlConnection.Close();
         }
 
-        //запрос для добавления новой записи информации
-        public static void AddInformation(string nameinformation, string textinformation_one, string textinformation_two, string textinformation_three, string textinformation_four, string textinformation_five, string textinformation_six, string textinformation_seven, string textinformation_eight)
+        //запрос для добавления и редактирования записи информации о читателях
+        public static void AllSubscriber(string namecategory, string textinformation_one, string textinformation_two, string textinformation_three, string textinformation_four, string textinformation_five, string textinformation_six, string textinformation_seven, string textinformation_eight)
         {
             sqlConnection.Open();
             SqlCommand cmd = new SqlCommand("", sqlConnection);
-            if (nameinformation == "Readers")
+            if (namecategory == "Add")
                 cmd = new SqlCommand("insert into SubscriberTable (surname, name, patronymic, date_birthday, home_address, passport, place_work, telephone) values (@surname, @name, @patronymic, @date_birthday, @home_address, @passport, @place_work, @telephone)", sqlConnection);
-            if (nameinformation == "Readers")
-            {
-                cmd.Parameters.AddWithValue("surname", textinformation_one);
-                cmd.Parameters.AddWithValue("name", textinformation_two);
-                cmd.Parameters.AddWithValue("patronymic", textinformation_three);
-                cmd.Parameters.AddWithValue("date_birthday", textinformation_four);
-                cmd.Parameters.AddWithValue("home_Address", textinformation_five);
-                cmd.Parameters.AddWithValue("passport", textinformation_six);
-                cmd.Parameters.AddWithValue("place_work", textinformation_seven);
-                cmd.Parameters.AddWithValue("telephone", textinformation_eight);
-            }
             else
-                cmd.Parameters.AddWithValue("name", textinformation_one);
+                cmd = new SqlCommand("update SubscriberTable set surname=@surname, name=@name, patronymic=@patronymic, date_birthday=@date_birthday, home_address=@home_address, passport=@passport, place_work=@place_work, telephone=@telephone where id=@id", sqlConnection);
+            cmd.Parameters.AddWithValue("surname", textinformation_one);
+            cmd.Parameters.AddWithValue("name", textinformation_two);
+            cmd.Parameters.AddWithValue("patronymic", textinformation_three);
+            cmd.Parameters.AddWithValue("date_birthday", textinformation_four);
+            cmd.Parameters.AddWithValue("home_Address", textinformation_five);
+            cmd.Parameters.AddWithValue("passport", textinformation_six);
+            cmd.Parameters.AddWithValue("place_work", textinformation_seven);
+            cmd.Parameters.AddWithValue("telephone", textinformation_eight);
+            cmd.Parameters.AddWithValue("id", InformationForm.list_table[0, InformationForm.list_table.CurrentRow.Index].Value.ToString());
             cmd.ExecuteNonQuery();
             sqlConnection.Close();
         }

@@ -82,6 +82,7 @@
             this.btn_no.Size = new System.Drawing.Size(40, 40);
             this.btn_no.TabIndex = 2;
             this.btn_no.UseVisualStyleBackColor = true;
+            this.btn_no.Click += new System.EventHandler(this.btn_no_Click);
             // 
             // MessageForm
             // 
