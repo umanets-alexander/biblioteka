@@ -37,6 +37,9 @@ namespace biblioteka
                 //создаём таблицы в БД
                 SqlQuery.CreateTable();
             }
+            btn_add.Image = Image.FromFile(Path.GetFullPath(@"icon\category-add.png"));
+            btn_editing.Image = Image.FromFile(Path.GetFullPath(@"icon\category-editing.png"));
+            btn_delete.Image = Image.FromFile(Path.GetFullPath(@"icon\category-delete.png"));
         }
 
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
@@ -110,6 +113,13 @@ namespace biblioteka
             Information.Readers();
             Information.Show();
             SqlQuery.UpdateInformation("Readers");
+        }
+
+        private void btn_add_Click(object sender, EventArgs e)
+        {
+            BookForm BookF;
+            BookF = new BookForm();
+            BookF.Show();
         }
     }
 }
