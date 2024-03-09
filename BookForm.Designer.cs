@@ -44,6 +44,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -57,7 +58,6 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.btn_add = new System.Windows.Forms.Button();
             this.btn_close = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -200,6 +200,14 @@
             this.textBox2.Size = new System.Drawing.Size(296, 22);
             this.textBox2.TabIndex = 15;
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(200, 72);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(296, 24);
+            this.comboBox1.TabIndex = 16;
+            // 
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
@@ -299,20 +307,11 @@
             this.btn_close.TabIndex = 29;
             this.btn_close.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(200, 72);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(296, 24);
-            this.comboBox1.TabIndex = 30;
-            // 
             // BookForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(508, 592);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.btn_close);
             this.Controls.Add(this.btn_add);
             this.Controls.Add(this.richTextBox1);
@@ -326,6 +325,7 @@
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label14);
@@ -370,6 +370,7 @@
         private System.Windows.Forms.Button btn_close;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
@@ -380,7 +381,6 @@
         private System.Windows.Forms.ComboBox comboBox6;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.RichTextBox richTextBox1;
-        public System.Windows.Forms.ComboBox comboBox2;
         public System.Windows.Forms.ComboBox comboBox1;
     }
 }

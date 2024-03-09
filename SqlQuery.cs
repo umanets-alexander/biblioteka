@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -274,6 +272,23 @@ namespace biblioteka
                 InformationAddEditingForm.textbox_one.Text = sdr["surname"].ToString();
                 InformationAddEditingForm.textbox_two.Text = sdr["name"].ToString();
                 InformationAddEditingForm.textbox_three.Text = sdr["patronymic"].ToString();
+            }
+            sqlConnection.Close();
+        }
+
+        //запрос на получение списка в combobox
+        public static void ListComboBox()
+        {
+            BookForm BookAddForm;
+            BookAddForm = new BookForm();
+            sqlConnection.Open();
+            SqlCommand cmd = new SqlCommand("", sqlConnection);
+            cmd = new SqlCommand("select * from AuthorTable order by name", sqlConnection);
+            SqlDataReader sdr = cmd.ExecuteReader();
+            while (sdr.Read())
+            {
+                //BookAddForm.comboBox1.Items.Add(namelist);
+                BookAddForm.comboBox1.Items.Add(Convert.ToString(sdr["name"]));
             }
             sqlConnection.Close();
         }

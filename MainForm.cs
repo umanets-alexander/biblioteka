@@ -121,6 +121,13 @@ namespace biblioteka
             BookForm BookF;
             BookF = new BookForm();
             BookF.Show();
+            //SqlQuery.ListComboBox();
+
+        }
+
+        private void сброситьБДToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DB.ResetDBFile();
         }
     }
 }
